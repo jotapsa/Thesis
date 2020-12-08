@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Prototype</string>
+    <string name="wifiScanTextDefaultValue">No wifi scan performed yet.</string>
+    <string name="telephonyScanTextDefaultValue">No telephony scan performed yet.</string>
+</resources>
