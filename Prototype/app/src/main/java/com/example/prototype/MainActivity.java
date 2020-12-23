@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 RadioAccessSpecifier radioAccessSpecifiers[];
-                int bands[];
+                int bands[] = new int[0];
                 NetworkScanRequest networkScanRequest;
 
                 ArrayList<String> PLMNIds = new ArrayList<String>(Arrays.asList("42501"));
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                         1,
                         PLMNIds);
 
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                if (ActivityCompat.checkSelfPermission(this.getCon, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
                     //    ActivityCompat#requestPermissions
                     // here to request the missing permissions, and then overriding
@@ -147,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
                     //                                          int[] grantResults)
                     // to handle the case where the user grants the permission. See the documentation
                     // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
+//                    return;
+//                }
                 //telephonyManager.requestNetworkScan(networkScanRequest, AsyncTask.SERIAL_EXECUTOR, new RadioCallback());
             }
         });
