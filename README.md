@@ -1,7 +1,23 @@
-https://developer.android.com/reference/android/net/wifi/WifiInfo
-https://developer.android.com/reference/android/net/wifi/WifiManager
+### Wifi Signal Scan
 
-https://stackoverflow.com/questions/51305890/telephonymanager-requestnetworkscan-android-p-preview
+https://developer.android.com/reference/android/net/wifi/WifiManager
+https://developer.android.com/guide/topics/connectivity/wifi-scan#java
+
+#### Permissions
+
+ACCESS_FINE_LOCATION
+CHANGE_WIFI_STATE
+ACCESS_WIFI_STATE
+
+Location services enabled
+
+
+### Cellphone Signal Scan
+
+https://github.com/usnistgov/LTECoverageTool
+
+
+
 
 Data Row
 Timestamp - Type of signal (3G / WIFI) - RSSI (dBm)
