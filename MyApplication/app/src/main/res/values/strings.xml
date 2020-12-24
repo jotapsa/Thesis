@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="scan_string">Please perform a scan!</string>
+    <string name="wifi_scan_button_string">Wi-Fi</string>
+    <string name="telephony_scan_button_string">Cellular</string>
+
+    <string name="model_string">Activity Status: TBD</string>
+    <string name="model_call_string">Determine</string>
+
+    <string name="info_string">Phone information:</string>
+</resources>
