@@ -11,18 +11,23 @@ ACCESS_WIFI_STATE
 
 Location services enabled
 
+Also turn throttling off for the frequency of scans using WifiManager.startScan(). (under Developer Options > Networking > Wi-Fi scan throttling).
+(Opções de Programador -> Redes -> Controlo da procura de Wi-Fi)
 
 ### Cellphone Signal Scan
 
 https://github.com/usnistgov/LTECoverageTool
-
-
+Maybe get information from other CellInfo Instances like Wcdma ?
 
 
 Data Row
+?????
 Timestamp - Type of signal (3G / WIFI) - RSSI (dBm)
+?????
 
+?????
 Take a sample every .5s
+?????
 Model should require a minimum amount of samples to work.
 
 To train the model -

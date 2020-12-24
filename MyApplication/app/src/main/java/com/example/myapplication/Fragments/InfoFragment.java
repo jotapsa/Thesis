@@ -1,14 +1,26 @@
 package com.example.myapplication.Fragments;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
+
+import java.util.Objects;
+
+import static android.content.Context.TELEPHONY_SERVICE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +28,7 @@ import com.example.myapplication.R;
  * create an instance of this fragment.
  */
 public class InfoFragment extends Fragment {
+    private static final String TAG = "InfoFragment";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +75,65 @@ public class InfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TextView phoneInfoText = view.findViewById(R.id.phone_info_text);
+        Button phoneInfoButton = view.findViewById(R.id.phone_scan_button);
+
+        StringBuilder telephonyScanStringBuilder = new StringBuilder();
+
+        phoneInfoButton.setOnClickListener(v -> {
+            telephonyScanStringBuilder.delete(0, Math.max(telephonyScanStringBuilder.length()-1, 0));
+            telephonyScanStringBuilder.append("Phone details:\n");
+
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                TelephonyManager telephonyManager = (TelephonyManager) getContext().getSystemService(TELEPHONY_SERVICE);
+
+                int phoneType = telephonyManager.getPhoneType();
+                String phoneTypeString = "";
+                switch (phoneType){
+                    case TelephonyManager.PHONE_TYPE_CDMA:
+                        phoneTypeString = "CDMA";
+                        break;
+                    case TelephonyManager.PHONE_TYPE_GSM:
+                        phoneTypeString = "GSM";
+                        break;
+                    case TelephonyManager.PHONE_TYPE_SIP:
+                        phoneTypeString = "SIP";
+                        break;
+                    case TelephonyManager.PHONE_TYPE_NONE:
+                        phoneTypeString = "NONE";
+                        break;
+                    default:
+                        break;
+                }
+
+                boolean isRoaming = telephonyManager.isNetworkRoaming();
+
+                String deviceId = "";
+                String simSerialNumber = "";
+                String simCountryIso = telephonyManager.getSimCountryIso();
+                String networkCountryIso = telephonyManager.getNetworkCountryIso();
+                String voiceMailNumber = telephonyManager.getVoiceMailNumber();
+                String simOperatorName = telephonyManager.getSimOperatorName();
+                String deviceSoftwareVersion = telephonyManager.getDeviceSoftwareVersion();
+
+                telephonyScanStringBuilder.append("Phone Type: ").append(phoneTypeString).append("\n");
+                telephonyScanStringBuilder.append("Roaming: ").append(isRoaming).append("\n");
+                telephonyScanStringBuilder.append("Device EMEI: ").append(deviceId).append("\n");
+                telephonyScanStringBuilder.append("SIM Serial Number: ").append(simSerialNumber).append("\n");
+                telephonyScanStringBuilder.append("SIM Country ISO: ").append(simCountryIso).append("\n");
+                telephonyScanStringBuilder.append("Network Country ISO: ").append(networkCountryIso).append("\n");
+                telephonyScanStringBuilder.append("VoiceMail Number: ").append(voiceMailNumber).append("\n");
+                telephonyScanStringBuilder.append("Sim Operator Name: ").append(simOperatorName).append("\n");
+                telephonyScanStringBuilder.append("SoftwareVersion: ").append(deviceSoftwareVersion).append("\n");
+
+            }
+
+            phoneInfoText.setText(telephonyScanStringBuilder.toString());
+        });
     }
 }

@@ -6,7 +6,8 @@
     <string name="telephony_scan_button_string">Cellular</string>
 
     <string name="model_string">Activity Status: TBD</string>
-    <string name="model_call_string">Determine</string>
+    <string name="model_call_button_string">Determine</string>
 
-    <string name="info_string">Phone information:</string>
+    <string name="info_string">Detect Phone information!</string>
+    <string name="info_button_string">Detect</string>
 </resources>

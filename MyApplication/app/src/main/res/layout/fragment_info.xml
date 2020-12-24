@@ -7,8 +7,17 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/phone_info_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:text="@string/info_string" />
+
+    <Button
+        android:id="@+id/phone_scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="@string/info_button_string" />
 
 </FrameLayout>
